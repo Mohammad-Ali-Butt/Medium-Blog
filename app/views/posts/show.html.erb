@@ -1,0 +1,29 @@
+<div class="card my-5">
+  <div class="card-body">
+    <p id="notice"><%= notice %></p>
+    <div class="my-4">
+    <h1 class="text-center"><%= render @post %></h1>
+    </div>
+    <%= link_to "Edit this post", edit_post_path(@post), class: 'btn btn-primary' %> 
+  <%= link_to "Back to posts", posts_path, class: 'btn btn-primary' %>
+  <%= link_to "Destroy this post", @post, method: :delete, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+
+<%= render @post.comments %>
+
+<div class="card my-1">
+  <div class="card-body">
+    <h2 class="font-weight-bold">Comments</h2>
+    <%= form_with(model: [@post, @post.comments.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+

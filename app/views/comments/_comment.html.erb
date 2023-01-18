@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-body">
+    <%= comment.commenter.email %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <%= comment.body %>
+  </div>
+</div>
+
+
+<p>
+<% if current_user == comment.commenter %>
+  <%= link_to "Destroy Comment", [comment.commentable, comment], data: {
+                  turbo_method: :delete,
+                  turbo_confirm: "Are you sure?"
+                } %>
+  <% end %>
+</p>
+
+
